@@ -3,7 +3,7 @@
 Plugin Name: Veuse Portfolio
 Plugin URI: http://veuse.com/veuse-analytics
 Description: Creates a post-type for portfolio and two taxonomies. Fully localized. Templates included. This is an add-on for the Veuse Pagebuilder plugin. This plugin does not handle any presentation of the post-type data. You will need to edit theme files for this. Documentation on this at
-Version: 1.0
+Version: 1.2
 Author: Andreas Wilthil
 Author URI: http://veuse.com
 License: GPL3
@@ -763,10 +763,10 @@ if ( is_admin()) { // note the use of is_admin() to double check that this is ha
         'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
         'proper_folder_name' => 'veuse-portfolio', // this is the name of the folder your plugin lives in
         'api_url' => 'https://api.github.com/repos/veuse/veuse-portfolio', // the github API url of your github repo
-        'raw_url' => 'https://raw.github.com/veuse/veuse-portfolio/master', // the github raw url of your github repo
+        'raw_url' => 'https://raw.github.com/veuse/veuse-portfolio', // the github raw url of your github repo
         'github_url' => 'https://github.com/veuse/veuse-portfolio', // the github url of your github repo
-        'zip_url' => 'https://github.com/veuse/veuse-portfolio/zipball/master', // the zip url of the github repo
-        'sslverify' => false, // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
+        'zip_url' => 'https://github.com/veuse/veuse-portfolio/archive/master.zip', // the zip url of the github repo
+        'sslverify' => true, // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
         'requires' => '3.7', // which version of WordPress does your plugin require?
         'tested' => '3.8', // which version of WordPress is your plugin tested up to?
         'readme' => 'README.md', // which file to use as the readme for the version number
