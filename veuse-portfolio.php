@@ -1,19 +1,17 @@
 <?php
 /*
 Plugin Name: Veuse Portfolio
-Plugin URI: http://veuse.com/veuse-analytics
+Plugin URI: http://veuse.com/veuse-portfolio
 Description: Creates a post-type for portfolio and two taxonomies. Fully localized. Templates included. This is an add-on for the Veuse Pagebuilder plugin. This plugin does not handle any presentation of the post-type data. You will need to edit theme files for this. Documentation on this at
 Version: 1.2
-Author: Andreas Wilthil
+Author: Veuse- Andreas Wilthil
 Author URI: http://veuse.com
 License: GPL3
 Text Domain: veuse-portfolio
 Domain Path: /languages
 GitHub Plugin URI: https://github.com/veuse/veuse-portfolio
 GitHub Branch: master
-
-
-__('Veuse Portfolio', 'veuse-portfolio' ); /* Dummy call for plugin name translation. */
+*/
 
 
 class VeusePortfolio {
