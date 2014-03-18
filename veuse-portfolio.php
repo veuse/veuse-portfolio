@@ -3,12 +3,14 @@
 Plugin Name: Veuse Portfolio
 Plugin URI: http://veuse.com/veuse-analytics
 Description: Creates a post-type for portfolio and two taxonomies. Fully localized. Templates included. This is an add-on for the Veuse Pagebuilder plugin. This plugin does not handle any presentation of the post-type data. You will need to edit theme files for this. Documentation on this at
-Version: 1.3
+Version: 1.2
 Author: Andreas Wilthil
 Author URI: http://veuse.com
 License: GPL3
 Text Domain: veuse-portfolio
 Domain Path: /languages
+GitHub Plugin URI: https://github.com/veuse/veuse-portfolio
+GitHub Branch: master
 */
 
 __('Veuse Portfolio', 'veuse-portfolio' ); /* Dummy call for plugin name translation. */
@@ -756,25 +758,7 @@ $veuse_portfolio = new VeusePortfolio;
 
 /* Updater */
 
-include_once('updater.php');
-
-if ( is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
-    $config = array(
-        'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
-        'proper_folder_name' => 'veuse-portfolio', // this is the name of the folder your plugin lives in
-        'api_url' => 'https://api.github.com/repos/veuse/veuse-portfolio', // the github API url of your github repo
-        'raw_url' => 'https://raw.github.com/veuse/veuse-portfolio', // the github raw url of your github repo
-        'github_url' => 'https://github.com/veuse/veuse-portfolio', // the github url of your github repo
-        'zip_url' => 'https://github.com/veuse/veuse-portfolio/archive/master.zip', // the zip url of the github repo
-        'sslverify' => true, // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
-        'requires' => '3.7', // which version of WordPress does your plugin require?
-        'tested' => '3.8', // which version of WordPress is your plugin tested up to?
-        'readme' => 'README.md', // which file to use as the readme for the version number
-        'access_token' => '' // Access private repositories by authorizing under Appearance > Github Updates when this example plugin is installed
-    );
-    new WP_GitHub_Updater($config);
-}
-
+require_once 'updater/github-updater.php';
 
 require_once('widget.php');
 
