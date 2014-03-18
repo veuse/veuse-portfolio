@@ -3,7 +3,7 @@
 Plugin Name: Veuse Portfolio
 Plugin URI: http://veuse.com/veuse-analytics
 Description: Creates a post-type for portfolio and two taxonomies. Fully localized. Templates included. This is an add-on for the Veuse Pagebuilder plugin. This plugin does not handle any presentation of the post-type data. You will need to edit theme files for this. Documentation on this at
-Version: 1.0
+Version: 1.3
 Author: Andreas Wilthil
 Author URI: http://veuse.com
 License: GPL3
