@@ -11,7 +11,7 @@ Text Domain: veuse-portfolio
 Domain Path: /languages
 GitHub Plugin URI: https://github.com/veuse/veuse-portfolio
 GitHub Branch: master
-*/
+
 
 __('Veuse Portfolio', 'veuse-portfolio' ); /* Dummy call for plugin name translation. */
 
