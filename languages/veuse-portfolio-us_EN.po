@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Veuse Posttypes Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-27 18:11+0100\n"
+"PO-Revision-Date: 2013-05-27 18:11+0100\n"
+"Last-Translator: \n"
+"Language-Team: Veuse <andreas.wilthil@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: 1,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Language: Norwegian\n"
+"X-Poedit-Country: Norway\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../veuse-portfolio.php:14
+msgid "Veuse Portfolio"
+msgstr "Veuse Portfolio Plugin"
+
+#: ../veuse-portfolio.php:38
+#: ../veuse-portfolio.php:78
+msgid "Portfolio"
+msgstr ""
+
+#: ../veuse-portfolio.php:39
+msgid "Project"
+msgstr ""
+
+#: ../veuse-portfolio.php:40
+#: ../veuse-portfolio.php:41
+msgid "Add New Project"
+msgstr ""
+
+#: ../veuse-portfolio.php:42
+msgid "Edit Project"
+msgstr ""
+
+#: ../veuse-portfolio.php:43
+msgid "All Projects"
+msgstr ""
+
+#: ../veuse-portfolio.php:44
+msgid "New Project"
+msgstr ""
+
+#: ../veuse-portfolio.php:45
+msgid "View Project"
+msgstr ""
+
+#: ../veuse-portfolio.php:46
+msgid "Search Projects"
+msgstr ""
+
+#: ../veuse-portfolio.php:47
+msgid "No Projects"
+msgstr ""
+
+#: ../veuse-portfolio.php:48
+msgid "No Projects found in Trash"
+msgstr ""
+
+#: ../veuse-portfolio.php:77
+msgid "Portfolios"
+msgstr ""
+
+#: ../veuse-portfolio.php:79
+#: ../veuse-portfolio.php:80
+msgid "Add New Portfolio"
+msgstr ""
+
+#: ../veuse-portfolio.php:81
+msgid "Edit Portfolio"
+msgstr ""
+
+#: ../veuse-portfolio.php:82
+msgid "All Portfolios"
+msgstr ""
+
+#: ../veuse-portfolio.php:83
+msgid "New Portfolio"
+msgstr ""
+
+#: ../veuse-portfolio.php:84
+msgid "View Portfolios"
+msgstr ""
+
+#: ../veuse-portfolio.php:85
+msgid "Search Portfolios"
+msgstr ""
+
+#: ../veuse-portfolio.php:86
+msgid "No Portfolios found"
+msgstr ""
+
+#: ../veuse-portfolio.php:104
+msgid "Clients"
+msgstr ""
+
+#: ../veuse-portfolio.php:105
+msgid "Client"
+msgstr ""
+
+#: ../veuse-portfolio.php:106
+#: ../veuse-portfolio.php:107
+msgid "Add New Client"
+msgstr ""
+
+#: ../veuse-portfolio.php:108
+msgid "Edit Client"
+msgstr ""
+
+#: ../veuse-portfolio.php:109
+msgid "All Clients"
+msgstr ""
+
+#: ../veuse-portfolio.php:110
+msgid "New Client"
+msgstr ""
+
+#: ../veuse-portfolio.php:111
+msgid "View Client"
+msgstr ""
+
+#: ../veuse-portfolio.php:112
+msgid "Search Clients"
+msgstr ""
+
+#: ../veuse-portfolio.php:113
+msgid "No Clients found"
+msgstr ""
+

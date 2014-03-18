@@ -1,0 +1,426 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Veuse Posttypes Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-09 15:52+0100\n"
+"PO-Revision-Date: 2014-03-09 15:52+0100\n"
+"Last-Translator: Andreas Wilthil <andreas@siteman.no>\n"
+"Language-Team: Veuse <andreas.wilthil@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: 1,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../loop-portfolio.php:23
+msgid "All"
+msgstr "Alle"
+
+#: ../veuse-portfolio.php:14
+msgid "Veuse Portfolio"
+msgstr "Siteman Portefølje-plugin"
+
+#: ../veuse-portfolio.php:99
+msgid "Projects"
+msgstr "Prosjekter"
+
+#: ../veuse-portfolio.php:100
+msgid "Project"
+msgstr "Prosjekt"
+
+#: ../veuse-portfolio.php:101 ../veuse-portfolio.php:102
+msgid "Add New Project"
+msgstr "Legg til prosjekt"
+
+#: ../veuse-portfolio.php:103
+msgid "Edit Project"
+msgstr "Endre prosjekt"
+
+#: ../veuse-portfolio.php:104
+msgid "All Projects"
+msgstr "Alle prosjekter"
+
+#: ../veuse-portfolio.php:105
+msgid "New Project"
+msgstr "Nytt prosjekt"
+
+#: ../veuse-portfolio.php:106
+msgid "View Project"
+msgstr "Vis prosjekt"
+
+#: ../veuse-portfolio.php:107
+msgid "Search Projects"
+msgstr "Søk i prosjekter"
+
+#: ../veuse-portfolio.php:108
+msgid "No Projects"
+msgstr "Ingen prosjekter"
+
+#: ../veuse-portfolio.php:109
+msgid "No Projects found in Trash"
+msgstr "Ingen prosjekter i papirkurven"
+
+#: ../veuse-portfolio.php:136
+msgid "Portfolios"
+msgstr "Porteføljer"
+
+#: ../veuse-portfolio.php:137
+msgid "Portfolio"
+msgstr "Portefølje"
+
+#: ../veuse-portfolio.php:138 ../veuse-portfolio.php:139
+msgid "Add New Portfolio"
+msgstr "Legg til portefølje"
+
+#: ../veuse-portfolio.php:140
+msgid "Edit Portfolio"
+msgstr "Endre portefølje"
+
+#: ../veuse-portfolio.php:141
+msgid "All Portfolios"
+msgstr "Alle porteføljer"
+
+#: ../veuse-portfolio.php:142
+msgid "New Portfolio"
+msgstr "Ny portefølje"
+
+#: ../veuse-portfolio.php:143
+msgid "View Portfolios"
+msgstr "Se porteføljer"
+
+#: ../veuse-portfolio.php:144
+msgid "Search Portfolios"
+msgstr "Søk i porteføljer"
+
+#: ../veuse-portfolio.php:145
+msgid "No Portfolios found"
+msgstr "Ingen porteføljer funnet"
+
+#: ../veuse-portfolio.php:191
+msgid "Skills"
+msgstr "Egenskaper"
+
+#: ../veuse-portfolio.php:192
+msgid "Skill"
+msgstr "Egenskap"
+
+#: ../veuse-portfolio.php:193 ../veuse-portfolio.php:194
+msgid "Add New Skill"
+msgstr "Legg til ny egenskap"
+
+#: ../veuse-portfolio.php:195
+msgid "Edit Skill"
+msgstr "Endre egenskap"
+
+#: ../veuse-portfolio.php:196
+msgid "All Skills"
+msgstr ""
+
+#: ../veuse-portfolio.php:197
+msgid "New Skill"
+msgstr ""
+
+#: ../veuse-portfolio.php:198
+msgid "View Skill"
+msgstr ""
+
+#: ../veuse-portfolio.php:199
+msgid "Search Skills"
+msgstr "Søk i egenskaper"
+
+#: ../veuse-portfolio.php:200
+msgid "No Skills found"
+msgstr "Ingen egenskaper funnet"
+
+#: ../veuse-portfolio.php:236
+msgid "Show project"
+msgstr "Vis prosjekt "
+
+#: ../veuse-portfolio.php:329
+msgid "Title"
+msgstr ""
+
+#: ../veuse-portfolio.php:330
+msgid "Thumbnail"
+msgstr ""
+
+#: ../veuse-portfolio.php:331
+msgid "Excerpt"
+msgstr "Utdrag"
+
+#: ../veuse-portfolio.php:332
+msgid "Category"
+msgstr "Kategori"
+
+#: ../veuse-portfolio.php:333
+msgid "Sidebar"
+msgstr "Sidepanel"
+
+#: ../veuse-portfolio.php:585
+msgid "Categories"
+msgstr "Kategorier"
+
+#: ../veuse-portfolio.php:621
+msgid "Grid"
+msgstr ""
+
+#: ../veuse-portfolio.php:639
+msgid "Elements"
+msgstr "Elementer"
+
+#: ../veuse-portfolio.php:657
+msgid "List type"
+msgstr ""
+
+#: ../veuse-portfolio.php:673 ../veuse-portfolio.php:934
+msgid "Posts per page"
+msgstr "Innlegg per side"
+
+#: ../veuse-portfolio.php:674
+msgid "How many posts to display. (-1 = all)"
+msgstr "Hvor mange innlegg skal vises? (-1 = alle)"
+
+#: ../veuse-portfolio.php:685
+msgid "Order by"
+msgstr "Sorter etter"
+
+#: ../veuse-portfolio.php:686
+msgid "Select a criteria"
+msgstr "Velg et kriterium"
+
+#: ../veuse-portfolio.php:700
+msgid "Order"
+msgstr "Sorter"
+
+#: ../veuse-portfolio.php:717
+msgid "Link text"
+msgstr "Lenke tekst"
+
+#: ../veuse-portfolio.php:718
+msgid "Text for the \"read-more\" link "
+msgstr "Tekst for 'les-mer' lenke"
+
+#: ../veuse-portfolio.php:729
+msgid "Image size"
+msgstr "Bildestørrelse"
+
+#: ../veuse-portfolio.php:730
+msgid "Override the predefined image size. (width x height, ie. 400x200) "
+msgstr ""
+
+#: ../veuse-portfolio.php:740
+msgid "Insert shortcode"
+msgstr "Sett inn hurtigkode"
+
+#: ../veuse-portfolio.php:890
+msgid "Veuse Portfolio Options"
+msgstr "Siteman Portefølje innstillinger"
+
+#: ../veuse-portfolio.php:891
+msgid "Settings for the portfolio-plugin."
+msgstr "Innstillinger for portefølje-innstikket"
+
+#: ../veuse-portfolio.php:893
+msgid "Shortcode syntax"
+msgstr ""
+
+#: ../veuse-portfolio.php:906
+msgid "Portfolio settings"
+msgstr "Porteføljeinnstillinger"
+
+#: ../veuse-portfolio.php:918
+msgid "Enable plugin stylesheet"
+msgstr "Bruk stilark fra innstikket"
+
+#: ../veuse-portfolio.php:921
+msgid ""
+"Uncheck this if you want to use theme stylesheet to style the portfolio."
+msgstr ""
+
+#: ../veuse-portfolio.php:926
+msgid "Enable lightbox"
+msgstr ""
+
+#: ../veuse-portfolio.php:929
+msgid ""
+"Check this if you want to add the lightbox feature when clicking on a "
+"portfolio thumbnail"
+msgstr ""
+
+#: ../veuse-portfolio.php:937
+msgid "How many entries you want to display per page."
+msgstr ""
+
+#: ../veuse-portfolio.php:942
+msgid "Layout"
+msgstr ""
+
+#: ../veuse-portfolio.php:945 ../widget.php:134
+msgid "2 columns"
+msgstr "2 kolonner"
+
+#: ../veuse-portfolio.php:946 ../widget.php:135
+msgid "3 columns"
+msgstr "3 kolonner"
+
+#: ../veuse-portfolio.php:947 ../widget.php:136
+msgid "4 columns"
+msgstr "4 kolonner"
+
+#: ../veuse-portfolio.php:949
+msgid ""
+"Select a layout to use in the portfolio-template and in taxonomy-template."
+msgstr ""
+
+#: ../veuse-portfolio.php:955
+msgid "Save Changes"
+msgstr ""
+
+#: ../veuse-portfolio.php:978
+msgid "Settings"
+msgstr ""
+
+#: ../veuse-portfolio.php:1008
+msgid "Project website"
+msgstr "Prosjektets nettside"
+
+#: ../veuse-portfolio.php:1010
+msgid "Enter url to the project website"
+msgstr ""
+
+#: ../veuse-portfolio.php:1015
+msgid "Client"
+msgstr "Kunde"
+
+#: ../veuse-portfolio.php:1017
+msgid "Enter name of client"
+msgstr ""
+
+#: ../veuse-portfolio.php:1021
+msgid "Launch"
+msgstr "Lansering"
+
+#: ../veuse-portfolio.php:1023
+msgid "Time of launch"
+msgstr ""
+
+#: ../veuse-portfolio.php:1028
+msgid "Credits"
+msgstr ""
+
+#: ../widget.php:11
+msgid "Portfolio (Veuse)"
+msgstr "Portefølje (Siteman)"
+
+#: ../widget.php:12
+msgid "Add a portfolio in your page or post"
+msgstr "Sett inn en portefølje på siden."
+
+#: ../widget.php:60
+msgid "-1"
+msgstr "-1"
+
+#: ../widget.php:61
+msgid "3"
+msgstr "3"
+
+#: ../widget.php:62
+msgid "none"
+msgstr "ingen"
+
+#: ../widget.php:63
+msgid "date"
+msgstr "dato"
+
+#: ../widget.php:64
+msgid "ASC"
+msgstr ""
+
+#: ../widget.php:69
+msgid "Title:"
+msgstr "Tittel:"
+
+#: ../widget.php:101
+msgid "Select portfolios:"
+msgstr "Velg porteføljer"
+
+#: ../widget.php:131
+msgid "Grid:"
+msgstr ""
+
+#: ../widget.php:133
+msgid "1 column"
+msgstr "1 kolonne"
+
+#: ../widget.php:142
+msgid "Type:"
+msgstr ""
+
+#: ../widget.php:144
+msgid "Pagination"
+msgstr "Paginering"
+
+#: ../widget.php:145
+msgid "Filtered"
+msgstr "Filter"
+
+#: ../widget.php:146
+msgid "None"
+msgstr "Ingen"
+
+#: ../widget.php:154
+msgid "Order by:"
+msgstr "Ordne etter"
+
+#: ../widget.php:158
+msgid "Post title"
+msgstr "Tittel"
+
+#: ../widget.php:159
+msgid "Post date"
+msgstr "Publiseringsdato"
+
+#: ../widget.php:166
+msgid "Order:"
+msgstr "Rekkefølge:"
+
+#: ../widget.php:170
+msgid "Ascending"
+msgstr "Økende"
+
+#: ../widget.php:171
+msgid "Descending"
+msgstr "Synkende"
+
+#: ../widget.php:178
+msgid "Per page:"
+msgstr "Per side:"
+
+#: ../widget.php:180
+msgid "To show all, enter -1"
+msgstr "For å vise alle, skriv -1"
+
+#: ../widget.php:184
+msgid "Image size:"
+msgstr "Bildestørrelse"
+
+#: ../widget.php:186
+msgid "width * height"
+msgstr "bredde * høyde"
+
+#~ msgid "Edit Client"
+#~ msgstr "Endre kunde"
+
+#~ msgid "All Clients"
+#~ msgstr "Alle kunder"
+
+#~ msgid "New Client"
+#~ msgstr "Ny kunde"
+
+#~ msgid "View Client"
+#~ msgstr "Vis kunde"
