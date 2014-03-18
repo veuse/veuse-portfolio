@@ -71,31 +71,25 @@ class VeusePortfolioWidget extends WP_Widget {
 		</p>
 		
 		<style>
-			.portfolioselector-wrapper {
-				
+			.portfolioselector-wrapper {		
 				padding:10px; background: #fff; border:1px solid #eee; overflow: scroll; max-height:180px;
-				
 			}
-			
 			.portfolioselector-wrapper a { 
 				padding:3px 10px 3px 0px;  display: block; margin: 0; cursor: pointer; text-decoration: none;
 				border-bottom:1px dotted #d4d4d4;
 			}
-			
-			.portfolioselector-wrapper a:hover { color:#2a95c5;}
-						
+			.portfolioselector-wrapper a:hover { color:#2a95c5;}			
 			.portfolioselector-wrapper a:after {
 					content:'';
 					color:#999;
 					float:right;
 					font-weight: bold;
-				} 
+			} 
 			.portfolioselector-wrapper a.active { font-weight: bold; color:#de4b29;}
 			.portfolioselector-wrapper a.active:after {
 					content:'x';
 					color:#de4b29;
-				
-				} 
+			} 
 		</style>
 		
 		<label for="<?php echo $this->get_field_id( 'portfolio' ); ?>"><?php _e( "Select portfolios:",'veuse-pagelist' ); ?></label> 
@@ -105,25 +99,20 @@ class VeusePortfolioWidget extends WP_Widget {
 		$portfolio_array = explode(',', $portfolio);
 		
 		$terms = get_terms( 'portfolio-category', array('hide_empty' => 1 ));
-        
-                 
-        
+                
         if( $terms ){
                               
             foreach( $terms as $term ){
             	?>
-
-            	<a href="#" data-portfolio-id="<?php echo $term->slug;?>"> <?php echo $term->name;?></a>
+            	<a href="#" data-portfolio-id="<?php echo $term->slug;?>" <?php if(!empty($portfolio) && in_array($term->slug, $portfolio_array) ) echo 'class="active"';?>> <?php echo $term->name;?></a>
             	<?php
-     
-            }
-            
+            }        
         }
 
 		?>
 		</div>
 		
-		<input id="<?php echo $this->get_field_id( 'portfolio' ); ?>" name="<?php echo $this->get_field_name( 'portfolio' ); ?>" type="hidden" value="<?php echo esc_attr( $portfolio );?>" />
+		<input id="<?php echo $this->get_field_id( 'portfolio' ); ?>" name="<?php echo $this->get_field_name( 'portfolio' ); ?>" type="text" value="<?php echo esc_attr( $portfolio );?>" />
 		
 
 		
@@ -192,6 +181,20 @@ class VeusePortfolioWidget extends WP_Widget {
 
 } 
 
-add_action('widgets_init',create_function('','return register_widget("VeusePortfolioWidget");'));
+/**
+  *	Register widget on init, so it will not display on widget.php,
+  *	as this widget is not intended for sidebars 
+  */
+
+add_action('init',create_function('','return register_widget("VeusePortfolioWidget");'));
+
+/**
+  *	Uncomment the line below if you want the widget
+  *	to be registered in widgets.php. 
+  *	Comment the init action above.
+  *
+  */
+  
+//add_action('widgets_init',create_function('','return register_widget("VeusePortfolioWidget");'));
  
 ?>

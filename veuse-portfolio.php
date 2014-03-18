@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Veuse Portfolio
-Plugin URI: http://veuse.com/veuse-portfolio
+Plugin URI: http://veuse.com/veuse-analytics
 Description: Creates a post-type for portfolio and two taxonomies. Fully localized. Templates included. This is an add-on for the Veuse Pagebuilder plugin. This plugin does not handle any presentation of the post-type data. You will need to edit theme files for this. Documentation on this at
-Version: 1.3
-Author: Veuse- Andreas Wilthil
+Version: 1.2
+Author: Andreas Wilthil
 Author URI: http://veuse.com
 License: GPL3
 Text Domain: veuse-portfolio
@@ -12,6 +12,26 @@ Domain Path: /languages
 GitHub Plugin URI: https://github.com/veuse/veuse-portfolio
 GitHub Branch: master
 */
+
+
+/*  Copyright 2014  Andreas Wilthil  (email : andreas.wilthil@gmail.com)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2, as 
+    published by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+
+__('Veuse Portfolio', 'veuse-portfolio' ); /* Dummy call for plugin name translation. */
 
 
 class VeusePortfolio {
@@ -25,7 +45,8 @@ class VeusePortfolio {
 		$this->pluginPATH = plugin_dir_path(__FILE__) ;
 		
 		add_action('wp_enqueue_scripts', array(&$this,'veuse_portfolio_enqueue_script'));
-		add_action('admin_enqueue_scripts', array(&$this,'veuse_portfolio_admin_enqueue_script') );
+		add_action('admin_enqueue_scripts', array(&$this,'veuse_portfolio_admin_enqueue_script'), 100 );
+		
 		add_action('plugins_loaded', array(&$this,'veuse_portfolio_load'));
 		add_action('plugins_loaded', array(&$this,'localize_plugin'));
 		add_action('init', array(&$this,'veuse_post_type_portfolio'));
