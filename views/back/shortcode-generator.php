@@ -15,6 +15,7 @@ function add_my_custom_button($context) {
 }
 			
 function portfolio_popup_content() { ?>
+			
 			 <style>
 			 
 			 	#TB_overlay { z-index: 9998 !important; }
@@ -183,15 +184,7 @@ function portfolio_popup_content() { ?>
 							displaymorelink = 'false';
 						}
 						
-						var link = document.getElementById('insert-link');	
 						
-						if(link.checked){
-							insertlink = 'true';
-						}
-						else {
-							insertlink = 'false';
-							}
-								
 								
 						/*
 							'categories' 	=> '',

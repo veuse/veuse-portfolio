@@ -1,92 +1,34 @@
-ul.portfolio-filter { margin:0px 0px 20px 0; padding: 0; list-style: none; }
-ul.portfolio-filter li { display: inline; margin:0 16px 0 0; padding:0; }
+ul.veuse-portfolio-filter { margin:0px 0px 20px 0; padding: 0; list-style: none; }
+ul.veuse-portfolio-filter li { display: inline; margin:0 16px 0 0; padding:0; }
 
 
-.carousel {
 
-	position: relative;
-	margin:0 -15px;
-	box-sizing: border-box;
+ul.veuse-project-meta {
+	
+	list-style: none;
+	margin: 0px 0px 20px 0px;
+	
 }
-.carousel .carousel-item {
-	display: none;
+ul.veuse-project-meta li { list-style: none; margin:0 0 6px 0; }
+ul.veuse-project-meta li span { display: block; font-weight: bold; }
 
-}
-.carousel .carousel-active {
-	display: block;
-
-}
-
-
- /* any old class name would do here */
-.carousel .type-portfolio {
-	float: left;
-	width: 100%;
-	padding:15px !important;
-	box-sizing: border-box;
+@media only screen and (min-width: 480px){
+	ul.veuse-project-meta li { list-style: none; margin:0; }
+	ul.veuse-project-meta li span { display: inline-block; min-width: 100px; }
 }
 
 
- @media screen and (min-width: 768px){
-	 .carousel .type-portfolio {
-		 width: 33.333333333333333%;
-	 }
 
- }
+/* Portfolio list */
 
-  @media screen and (min-width: 1024px){
-	.carousel .type-portfolio {
-		 width: 25%;
-	 }
-
- }
-
-
-
-
-
-
-/*
- * responsive-carousel
- * https://github.com/filamentgroup/responsive-carousel
- *
- * Copyright (c) 2012 Filament Group, Inc.
- * Licensed under the MIT, GPL licenses.
-*/
-.carousel-fade {
-	position: relative;
-	overflow: visible;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	-ms-transform: translate3d(0, 0, 0);
-	-o-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
+ul.veuse-portfolio-list {
+	
+	margin: 0 0 20px;
+	
+	
 }
-.carousel-fade .carousel-item {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%; /* necessary for non-active slides */
-	display: block; /* overrides basic carousel styles */
-	-webkit-transition: opacity .5s ease;
-	-moz-transition: opacity .5s ease;
-	-ms-transition: opacity .5s ease;
-	-o-transition: opacity .5s ease;
-	transition: opacity .5s ease;
-}
-.carousel-fade .carousel-active {
-	position: relative;
-}
-.carousel-fade .carousel-item,
-.carousel-fade .carousel-out {
-	opacity: 0;
-}
-.carousel-fade .carousel-active,
-.carousel-fade .carousel-in {
-	opacity: 1;
-}
+ul.veuse-portfolio-list li { list-style: none; margin: 0;}
 
-.carousel-nav { text-align: center;}
 
 
 /* Foundation Block Grids for below small breakpoint */

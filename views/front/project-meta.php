@@ -19,7 +19,7 @@ $launch_data 	= get_post_meta($post->ID,'veuse_portfolio_launch',true);
 
 ?>
 
-<ul id="veuse-project-meta">
+<ul class="veuse-project-meta">
 <?php if( $website == true){ ?>
 <li><span data-id="meta-website"><?php _e('Website:','veuse-portfolio');?></span> <a href="<?php echo $website_data;?>"><?php echo $website_data;?></a></li>
 <?php } 

@@ -19,7 +19,7 @@ if($columns == '5') { $imagesize = array( 'width' => 200, 'height' => 200 * 0.6)
 
 		$allterms = get_terms( $taxonomy, array('hide_empty' => 1)); ?>
      			
-     	<ul class="portfolio-filter sub-nav">
+     	<ul class="veuse-portfolio-filter sub-nav">
     		<li class="active"><a href="#" class="showall" ><?php _e('All','ceon');?></a></li>
     			<?php
      			foreach ( $allterms as $term ) {
@@ -43,7 +43,7 @@ if($columns == '5') { $imagesize = array( 'width' => 200, 'height' => 200 * 0.6)
 
 
 		?>
-		<ul class="portfolio-list small-block-portfolio-grid-2 large-block-portfolio-grid-<?php echo $columns;?>">
+		<ul class="veuse-portfolio-list small-block-portfolio-grid-2 large-block-portfolio-grid-<?php echo $columns;?>">
 
 
 		<?php
@@ -74,7 +74,6 @@ if($columns == '5') { $imagesize = array( 'width' => 200, 'height' => 200 * 0.6)
 		       	   	$post_term_names.= '<span>' . $term->name. '</span>,';
 		       }
 
-
 		 endif;
 		 }
 		$img_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
@@ -85,11 +84,13 @@ if($columns == '5') { $imagesize = array( 'width' => 200, 'height' => 200 * 0.6)
 				<?php if(has_post_thumbnail()):?>
 				
 				<div class="entry-thumbnail">
+					
+					<?php if($plugin_options['lightbox'] == true):?>
+					<a class="zoom-link" href="<?php echo $img_url;?>" data-rel="lightbox" title="<?php the_title();?>">
+					<?php else:?>
 					<a href="<?php echo get_permalink();?>">
-						<span class="overlay"></span>
-					<?php //if($plugin_options['lightbox'] == true):?>
-				<!--	<a class="zoom-link" href="<?php echo $img_url;?>" data-rel="lightbox" title="<?php the_title();?>"><i class="icon-resize-full"></i></a>-->
-					<?php //endif;?>
+					<?php endif;?>	
+					
 					<?php echo veuse_retina_interchange_image( $img_url, $imagesize['width'], $imagesize['height'], true);?>
 					</a>
 				</div>
