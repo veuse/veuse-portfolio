@@ -44,6 +44,8 @@ class VeusePortfolio {
 		$this->pluginURI  = plugin_dir_url(__FILE__) ;
 		$this->pluginPATH = plugin_dir_path(__FILE__) ;
 		
+		require_once 'views/back/shortcode-generator.php';
+			
 		add_action('wp_enqueue_scripts', array(&$this,'veuse_portfolio_enqueue_script'));
 		add_action('admin_enqueue_scripts', array(&$this,'veuse_portfolio_admin_enqueue_script'), 100 );
 		
@@ -54,7 +56,13 @@ class VeusePortfolio {
 		add_filter('manage_portfolio_posts_columns', array(&$this,'veuse_portfolio_columns'));
 		add_action('manage_portfolio_posts_custom_column', array(&$this,'veuse_portfolio_custom_columns'), 10, 2 );
 		
+		/* Add shortcodes */
+		
 		add_shortcode('veuse_portfolio', array(&$this,'veuse_portfolio_shortcode'));
+		add_shortcode('veuse_project_content', array(&$this,'veuse_project_content'));
+		add_shortcode('veuse_project_meta', array(&$this,'veuse_project_meta'));
+		add_shortcode('veuse_project_excerpt', array(&$this,'veuse_project_excerpt'));
+		add_shortcode('veuse_project_image', array(&$this,'veuse_project_image'));
 		
 		add_action('media_buttons_context',  array(&$this,'add_my_custom_button'));
 		add_action('admin_footer',  array(&$this,'portfolio_popup_content' ));
@@ -117,7 +125,7 @@ class VeusePortfolio {
 	function veuse_post_type_portfolio() {
 	
 		$labels = array(
-	        'name' => __( 'Projects', 'veuse-portfolio' ), // Tip: _x('') is used for localization
+	        'name' => __( 'Portfolio', 'veuse-portfolio' ), // Tip: _x('') is used for localization
 	        'singular_name' => __( 'Project', 'veuse-portfolio' ),
 	        'add_new' => __( 'Add New Project', 'veuse-portfolio' ),
 	        'add_new_item' => __( 'Add New Project','veuse-portfolio' ),
@@ -142,7 +150,7 @@ class VeusePortfolio {
 				'hierarchical' => false,
 				'rewrite' => array("slug" => "work"), // Permalinks
 				'query_var' => "case", // This goes to the WP_Query schema
-				'supports' => array('title','author','thumbnail', 'editor' ,'comments','excerpt','custom-fields','post-formats'),
+				'supports' => array('title','author','thumbnail', 'editor' ,'comments','excerpt','custom-fields'),
 				'menu_position' => 30,
 				'menu_icon' => 'dashicons-portfolio',
 				'publicly_queryable' => true,
@@ -177,35 +185,6 @@ class VeusePortfolio {
 					)
 				);
 	
-	
-			/* Register client taxonomy */
-			/*
-			$clientlabels = array(
-			        'name' => __( 'Clients', 'veuse-posttypes' ), // Tip: _x('') is used for localization
-			        'singular_label' => __( 'Client', 'veuse-posttypes' ),
-			        'add_new' => __( 'Add New Client', 'veuse-posttypes' ),
-			        'add_new_item' => __( 'Add New Client','veuse-posttypes' ),
-			        'edit_item' => __( 'Edit Client', 'veuse-posttypes' ),
-			        'all_items' => __( 'All Clients','veuse-posttypes' ),
-			        'new_item' => __( 'New Client','veuse-posttypes' ),
-			        'view_item' => __( 'View Client','veuse-posttypes' ),
-			        'search_items' => __( 'Search Clients','veuse-posttypes' ),
-			        'not_found' =>  __( 'No Clients found','veuse-posttypes' ),
-			        'parent_item_colon' => ''
-			    );
-	
-			register_taxonomy("portfolio-client",
-					array("portfolio"),
-					array("hierarchical" => false,
-						'rewrite' => array( 'slug' => 'clients' ),
-						'show_ui' => true,
-						'show_admin_column' => true,
-						'query_var' => true,
-						"labels" => $clientlabels,
-	
-						)
-					);
-			*/
 			/* Register project tags */
 	
 			$portfoliotaglabels = array(
@@ -239,7 +218,87 @@ class VeusePortfolio {
 
 		}
 		
-		/* Shortcode
+		/**
+		 * Shortcodes
+		 *
+		 */
+		
+		
+		/* Shortcode for displaying post-meta */
+		
+		function veuse_project_content( $atts, $content = null ) { 
+		
+			extract(shortcode_atts(array(
+				'image'	 	=> true,
+				'title' 	=> true,
+				'content'	=> true,
+				'meta'		=> true	
+
+		    ), $atts));
+		    
+		    ob_start();
+			require($this->veuse_portfolio_locate_part('project-content'));
+			$output = ob_get_contents();
+			ob_end_clean();
+		    
+		    return $output;
+		}
+		 
+		/* Shortcode for displaying post-meta */
+		
+		function veuse_project_meta( $atts, $content = null ) { 
+		
+			extract(shortcode_atts(array(
+				'website'	 	=> true,
+				'client' 		=> true,
+				'launch'		=> true,
+				'credits'		=> true	
+
+		    ), $atts));
+		    
+		    ob_start();
+			require($this->veuse_portfolio_locate_part('project-meta'));
+			$output = ob_get_contents();
+			ob_end_clean();
+		    
+		    return $output;
+		}
+		
+		
+		/* Shortcode for displaying post-excerpt */
+		
+		function veuse_project_excerpt( $atts, $content = null ) { 
+			global $post;
+		  	if(!empty($post->post_excerpt))
+			$output = '<p class="veuse-project-excerpt"><strong>'.$post->post_excerpt.'</strong></p>';
+				    
+		    return $output;
+		}
+		
+		/* Shortcode for displaying post thumbnail */
+		
+		function veuse_project_image( $atts, $content = null ) { 
+			
+			extract(shortcode_atts(array(
+				'width' 		=> '900',
+				'height' 		=> '',
+				'retina'		=> true	
+
+		    ), $atts));
+				    
+			global $post;
+		  	
+		  	$img_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID));
+		  	
+		  	ob_start();
+			require($this->veuse_portfolio_locate_part('project-image'));
+			$output = ob_get_contents();
+			ob_end_clean();
+	    
+		    return $output;
+		}
+		
+		/* Shortcodes
 		============================================= */
 		
 		function veuse_portfolio_shortcode( $atts, $content = null ) {
@@ -250,7 +309,7 @@ class VeusePortfolio {
 						'order'			=> 'ASC',
 						'orderby'		=> 'title',
 						'type'			=> 'filtered',
-						'perpage'		=> '9',
+						'perpage'		=> '-1',
 						'template'		=> 'page',
 						'excerpt'		=> 'false',
 						'morelink'		=> 'false',
@@ -359,7 +418,7 @@ class VeusePortfolio {
 
 
 		/* Find template part
-
+	
 		Makes it possible to override the loop with
 		a custom theme loop-slider.php
 		
@@ -374,14 +433,15 @@ class VeusePortfolio {
 			     	$filepath = get_template_directory().'/'. $file .'.php';
 			     }
 			     else {
-			        $filepath = $this->pluginPATH . $file.'.php';
+			        $filepath = $this->pluginPATH .'views/front/'. $file.'.php';
 			       }
 			     return $filepath;
 		}
 		
-		
-		function add_my_custom_button($context) {
+	
 
+		function add_my_custom_button($context) {
+		
 			  //path to my icon
 			  $img = $this->pluginURI.'assets/images/icon-portfolio-large.png';
 			
@@ -392,10 +452,9 @@ class VeusePortfolio {
 			  $context .= "<a href='#TB_inline?&width=640&height=600&inlineId=veuse-portfolio-popup&modal=false' class='thickbox' style='margin:0;'  title='{$title}'><img src='{$img}' width='24' height='24' style='margin:-1px 0  0 4px; padding:0 !important;'/></a>";
 			
 			  return $context;
-			}
+		}
 			
-		function portfolio_popup_content() {
-			?>
+function portfolio_popup_content() { ?>
 			 <style>
 			 
 			 	#TB_overlay { z-index: 9998 !important; }
@@ -764,11 +823,6 @@ class VeusePortfolio {
 			<?php
 			}
 			
-			
-			
-	
-	
-	
 }
 
 
@@ -776,10 +830,84 @@ $veuse_portfolio = new VeusePortfolio;
 
 
 /* Updater */
-
 require_once 'updater/github-updater.php';
 
+/* Documentation */
+require_once 'documentation/documentation.php';
+
+
+
+/* Options */
+require_once 'views/back/options.php';
+
+/* Widget */
 require_once('widget.php');
+
+
+
+/**
+ *  Checks if a single-portfolio.php exists in theme.
+ *  If false, redirects single-portfolio to plugins single-portfolio.php
+ */
+
+function veuse_portfolio_template_include($template){
+    
+    global $wp_query;
+    
+    if ( $wp_query->query_vars['post_type'] === 'portfolio' ) {
+		
+		if ( !file_exists ( get_stylesheet_directory().'/single-portfolio.php') )
+		{
+	    	include( plugin_dir_path(__FILE__) . 'views/front/single-portfolio.php' );
+	        die();  
+	    }
+	    
+	}
+    
+    return $template;
+}
+
+add_filter('template_include', 'veuse_portfolio_template_include', 1, 1);
+
+
+
+/* Filter the content to insert post meta-data */
+
+if(!function_exists('veuse_portfolio_filter_content')){
+
+	function veuse_portfolio_filter_content($content) {
+		
+		$portfolio = new VeusePortfolio();
+		
+		if( is_singular( 'portfolio') /* && is_main_query()*/ ) {
+			
+			
+			ob_start();
+			
+			require($portfolio->veuse_portfolio_locate_part('project-image'));
+			$content_image = ob_get_contents();
+			ob_clean();
+			
+			require($portfolio->veuse_portfolio_locate_part('project-meta'));
+			$content_meta = ob_get_contents();
+			ob_clean();
+			
+			ob_end_clean();
+
+			//$content = $before_content . $content . $after_content;
+			return $content_image.$content_meta.$content;
+		}
+
+		else {
+
+			return $content;
+		}
+	}
+
+	add_filter('the_content', 'veuse_portfolio_filter_content', 1);
+}
+
+
 
 /* Pagination */
 function veuse_portfolio_pagination() {
@@ -811,321 +939,9 @@ function veuse_portfolio_pagination() {
 }
 
 
-/* Plugin options */
-
-// ------------------------------------------------------------------------
-// PLUGIN PREFIX:
-// ------------------------------------------------------------------------
-// A PREFIX IS USED TO AVOID CONFLICTS WITH EXISTING PLUGIN FUNCTION NAMES.
-// WHEN CREATING A NEW PLUGIN, CHANGE THE PREFIX AND USE YOUR TEXT EDITORS
-// SEARCH/REPLACE FUNCTION TO RENAME THEM ALL QUICKLY.
-// ------------------------------------------------------------------------
-
-// 'veuse_portfolio_' prefix is derived from [p]plugin [o]ptions [s]tarter [k]it
-
-// ------------------------------------------------------------------------
-// REGISTER HOOKS & CALLBACK FUNCTIONS:
-// ------------------------------------------------------------------------
-// HOOKS TO SETUP DEFAULT PLUGIN OPTIONS, HANDLE CLEAN-UP OF OPTIONS WHEN
-// PLUGIN IS DEACTIVATED AND DELETED, INITIALISE PLUGIN, ADD OPTIONS PAGE.
-// ------------------------------------------------------------------------
-
-// Set-up Action and Filter Hooks
-register_activation_hook(__FILE__, 'veuse_portfolio_add_defaults');
-register_uninstall_hook(__FILE__, 'veuse_portfolio_delete_plugin_options');
-add_action('admin_init', 'veuse_portfolio_init' );
-add_action('admin_menu', 'veuse_portfolio_add_options_page');
-add_filter( 'plugin_action_links', 'veuse_portfolio_plugin_action_links', 10, 2 );
-
-// --------------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: register_uninstall_hook(__FILE__, 'veuse_portfolio_delete_plugin_options')
-// --------------------------------------------------------------------------------------
-// THIS FUNCTION RUNS WHEN THE USER DEACTIVATES AND DELETES THE PLUGIN. IT SIMPLY DELETES
-// THE PLUGIN OPTIONS DB ENTRY (WHICH IS AN ARRAY STORING ALL THE PLUGIN OPTIONS).
-// --------------------------------------------------------------------------------------
-
-// Delete options table entries ONLY when plugin deactivated AND deleted
-function veuse_portfolio_delete_plugin_options() {
-	delete_option('veuse_portfolio_options');
-}
-
-// ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: register_activation_hook(__FILE__, 'veuse_portfolio_add_defaults')
-// ------------------------------------------------------------------------------
-// THIS FUNCTION RUNS WHEN THE PLUGIN IS ACTIVATED. IF THERE ARE NO THEME OPTIONS
-// CURRENTLY SET, OR THE USER HAS SELECTED THE CHECKBOX TO RESET OPTIONS TO THEIR
-// DEFAULTS THEN THE OPTIONS ARE SET/RESET.
-//
-// OTHERWISE, THE PLUGIN OPTIONS REMAIN UNCHANGED.
-// ------------------------------------------------------------------------------
-
-// Define default option settings
-function veuse_portfolio_add_defaults() {
-	$tmp = get_option('veuse_portfolio_options');
-    if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
-		delete_option('veuse_portfolio_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
-		$arr = array(	"css" => "1",
-						"lightbox" => "1",
-
-		);
-		update_option('veuse_portfolio_options', $arr);
-	}
-}
-
-// ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_action('admin_init', 'veuse_portfolio_init' )
-// ------------------------------------------------------------------------------
-// THIS FUNCTION RUNS WHEN THE 'admin_init' HOOK FIRES, AND REGISTERS YOUR PLUGIN
-// SETTING WITH THE WORDPRESS SETTINGS API. YOU WON'T BE ABLE TO USE THE SETTINGS
-// API UNTIL YOU DO.
-// ------------------------------------------------------------------------------
-
-// Init plugin options to white list our options
-function veuse_portfolio_init(){
-	register_setting( 'veuse_portfolio_plugin_options', 'veuse_portfolio_options', 'veuse_portfolio_validate_options' );
-}
-
-// ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_action('admin_menu', 'veuse_portfolio_add_options_page');
-// ------------------------------------------------------------------------------
-// THIS FUNCTION RUNS WHEN THE 'admin_menu' HOOK FIRES, AND ADDS A NEW OPTIONS
-// PAGE FOR YOUR PLUGIN TO THE SETTINGS MENU.
-// ------------------------------------------------------------------------------
-
-// Add menu page
-function veuse_portfolio_add_options_page() {
-	add_options_page('Veuse Portfolio Options Page', 'Veuse Portfolio', 'manage_options', __FILE__, 'veuse_portfolio_render_form');
-}
-
-// ------------------------------------------------------------------------------
-// CALLBACK FUNCTION SPECIFIED IN: add_options_page()
-// ------------------------------------------------------------------------------
-// THIS FUNCTION IS SPECIFIED IN add_options_page() AS THE CALLBACK FUNCTION THAT
-// ACTUALLY RENDER THE PLUGIN OPTIONS FORM AS A SUB-MENU UNDER THE EXISTING
-// SETTINGS ADMIN MENU.
-// ------------------------------------------------------------------------------
-
-// Render the Plugin options form
-function veuse_portfolio_render_form() {
-	?>
-	<div class="wrap">
-
-		<!-- Display Plugin Icon, Header, and Description -->
-		<div class="icon32" id="icon-options-general"><br></div>
-		<h2><?php _e('Veuse Portfolio Options','veuse-portfolio');?></h2>
-		<p><?php _e('Settings for the portfolio-plugin.','veuse-portfolio');?></p>
-
-		<h3><?php _e('Shortcode syntax','veuse-portfolio');?></h3>
-		<code>[portfolio categories="" perpage="" order="" orderby="" columns="" pagination=""]</code>
-		[portfolio categories="'.$terms.'" columns="'.$module_meta['columns'].'" type="'.$module_meta['type'].'" order="'.$module_meta['order'].'" orderby="' . $module_meta['orderby']. '" perpage="'.$module_meta['perpage'].'"]
-		<ul>
-			<li>Categories: category names separated by comma</li>
-			<li>Columns: 1, 2, 3 or 4</li>
-			<li>Type: pagination or filtered</li>
-			<li>Order: ASC or DESC</li>
-			<li>Orderby: title or date</li>
-			<li>Perpage: number of posts to display per page</li>
-		</ul>
 
 
-		<h3><?php _e('Portfolio settings','veuse-portfolio');?></h3>
-		<!-- Beginning of the Plugin Options Form -->
-		<form method="post" action="options.php">
-			<?php settings_fields('veuse_portfolio_plugin_options'); ?>
-			<?php $options = get_option('veuse_portfolio_options'); ?>
 
-			<!-- Table Structure Containing Form Controls -->
-			<!-- Each Plugin Option Defined on a New Table Row -->
-			<table class="form-table">
-
-
-				<tr>
-					<th scope="row"><strong><?php _e('Enable plugin stylesheet','veuse-portfolio');?></strong></th>
-					<td>
-						<input name="veuse_portfolio_options[css]" type="checkbox" <?php echo (isset($options['css']) ? 'checked="checked"' : ''); ?>/>
-						<label for="veuse_portfolio_options[css]"><?php _e('Uncheck this if you want to use theme stylesheet to style the portfolio.','veuse-portfolio');?></label>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row"><strong><?php _e('Enable lightbox','ceon');?></strong></th>
-					<td>
-						<input name="veuse_portfolio_options[lightbox]" type="checkbox" <?php echo (isset($options['lightbox']) ? 'checked="checked"' : ''); ?>/>
-						<label for="veuse_portfolio_options[lightbox]"><?php _e('Check this if you want to add the lightbox feature when clicking on a portfolio thumbnail','veuse-portfolio');?></label>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row"><strong><?php _e('Posts per page','ceon');?></strong></th>
-					<td>
-						<input name="veuse_portfolio_options[perpage]" type="text" value="<?php echo (!empty($options['perpage']) ? $options['perpage'] : '');?>"/>
-						<label for="veuse_portfolio_options[perpage]"><?php _e('How many entries you want to display per page.','veuse-portfolio');?></label>
-					</td>
-				</tr>
-
-				<tr>
-					<th scope="row"><strong><?php _e('Layout','veuse-employees');?></strong></th>
-					<td>
-						<select name="veuse_portfolio_options[layout]">
-							<option value="2" <?php if(isset($options['layout']) && $options['layout'] == 2 ) echo 'selected="selected"'; ?>><?php _e('2 columns','veuse-portfolio');?></option>
-							<option value="3" <?php if(isset($options['layout']) && $options['layout'] == 3 ) echo 'selected="selected"'; ?>><?php _e('3 columns','veuse-portfolio');?></option>
-							<option value="4" <?php if(isset($options['layout']) && $options['layout'] == 4 ) echo 'selected="selected"'; ?>><?php _e('4 columns','veuse-portfolio');?></option>
-						</select>
-						<label><?php _e('Select a layout to use in the portfolio-template and in taxonomy-template.','veuse-portfolio');?></label>
-					</td>
-				</tr>
-
-			</table>
-			<p class="submit">
-			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-			</p>
-		</form>
-
-
-	</div>
-	<?php
-}
-
-// Sanitize and validate input. Accepts an array, return a sanitized array.
-function veuse_portfolio_validate_options($input) {
-	 // strip html from textboxes
-	//$input['css'] =  	$options['css']; // Sanitize textarea input (strip html tags, and escape characters)
-	//$input['lightbox'] =$options['lightbox']; // Sanitize textarea input (strip html tags, and escape characters)
-
-	//$input['txt_one'] =  wp_filter_nohtml_kses($input['txt_one']); // Sanitize textbox input (strip html tags, and escape characters)
-	return $input;
-}
-
-// Display a Settings link on the main Plugins page
-function veuse_portfolio_plugin_action_links( $links, $file ) {
-
-	if ( $file == plugin_basename( __FILE__ ) ) {
-		$veuse_portfolio_links = '<a href="'.get_admin_url().'options-general.php?page=plugin-options-starter-kit/plugin-options-starter-kit.php">'.__('Settings').'</a>';
-		// make the 'Settings' link appear first
-		array_unshift( $links, $veuse_portfolio_links );
-	}
-
-	return $links;
-}
-
-
-/* Post meta
-=========================================================== */
-
-add_action( 'add_meta_boxes', 'veuse_portfolio_meta_box_add' );
-
-function veuse_portfolio_meta_box_add()
-{
-	add_meta_box( 'veuse_portfolio_meta', 'Project meta', 'veuse_portfolio_meta_box_cb', 'portfolio', 'normal', 'high' );
-}
-
-function veuse_portfolio_meta_box_cb( $post )
-{
-	$prefix = 'veuse_portfolio';
-
-	$values = get_post_custom( $post->ID );
-	$url = isset( $values[$prefix.'_website'] ) ? esc_attr( $values[$prefix.'_website'][0] ) : '';
-	$credits = isset( $values[$prefix.'_credits'] ) ? esc_attr( $values[$prefix.'_credits'][0] ) : '';
-	$client = isset( $values[$prefix.'_client'] ) ? esc_attr( $values[$prefix.'_client'][0] ) : '';
-	$launch = isset( $values[$prefix.'_launch'] ) ? esc_attr( $values[$prefix.'_launch'][0] ) : '';
-	wp_nonce_field( 'veuse_portfolio_nonce', 'meta_box_nonce' );?>
-	<p>
-		<label style="min-width:90px; display:inline-block;" for="<?php echo $prefix;?>_text"><?php _e('Project website','veuse-portfolio');?></label>
-		<input type="text" name="<?php echo $prefix;?>_website" id="<?php echo $prefix;?>_website" value="<?php echo $url; ?>" />
-		<span class="description"><?php _e('Enter url to the project website','veuse-portfolio');?></span>
-	</p>
-
-
-	<p>
-		<label style="min-width:90px; display:inline-block;" for="<?php echo $prefix;?>_client"><?php _e('Client','veuse-portfolio');?></label>
-		<input type="text" name="<?php echo $prefix;?>_client" id="<?php echo $prefix;?>_client" value="<?php echo $client; ?>" />
-		<span class="description"><?php _e('Enter name of client','veuse-portfolio');?></span>
-	</p>
-	
-	<p>
-		<label style="min-width:90px; display:inline-block;" for="<?php echo $prefix;?>_launch"><?php _e('Launch','veuse-portfolio');?></label>
-		<input type="text" name="<?php echo $prefix;?>_launch" id="<?php echo $prefix;?>_launch" value="<?php echo $launch; ?>" />
-		<span class="description"><?php _e('Time of launch','veuse-portfolio');?></span>
-	</p>
-
-	
-	<p>
-		<label style="min-width:90px;  display:inline-block;" for="<?php echo $prefix;?>_text"><?php _e('Credits','veuse-portfolio');?></label>
-		<input type="text" name="<?php echo $prefix;?>_credits" id="<?php echo $prefix;?>_credits" value="<?php echo $credits; ?>" />
-		
-	</p>
-	<!--
-	<p>
-		<label for="my_meta_box_select">Color</label>
-		<select name="<?php echo $prefix;?>_select" id="my_meta_box_select">
-			<option value="red" <?php selected( $selected, 'red' ); ?>>Red</option>
-			<option value="blue" <?php selected( $selected, 'blue' ); ?>>Blue</option>
-		</select>
-	</p>
-	<p>
-		<input type="checkbox" name="<?php echo $prefix;?>_check" id="<?php echo $prefix;?>_check" <?php checked( $check, 'on' ); ?> />
-		<label for="<?php echo $prefix;?>_check">Don't Check This.</label>
-	</p>-->
-	<?php }
-
-
-add_action( 'save_post', 'veuse_portfolio_meta_box_save' );
-
-
-function veuse_portfolio_meta_box_save( $post_id ){
-
-	$prefix = 'veuse_portfolio';
-
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'veuse_portfolio_nonce' ) ) return;
-
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_posts' ) ) return;
-
-	// now we can actually save the data
-	$allowed = array(
-		'a' => array( // on allow a tags
-			'href' => array() // and those anchors can only have href attribute
-		)
-	);
-
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST[$prefix.'_website'] ) )
-		update_post_meta( $post_id, $prefix.'_website', wp_kses( $_POST[$prefix.'_website'], $allowed ) );
-	else
-		delete_post_meta($post_id, $prefix.'_website');
-		
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST[$prefix.'_credits'] ) )
-		update_post_meta( $post_id, $prefix.'_credits', wp_kses( $_POST[$prefix.'_credits'], $allowed ) );
-	else
-		delete_post_meta($post_id, $prefix.'_credits');
-	
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST[$prefix.'_client'] ) )
-		update_post_meta( $post_id, $prefix.'_client', wp_kses( $_POST[$prefix.'_client'], $allowed ) );
-	else
-		delete_post_meta($post_id, $prefix.'_client');
-		
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST[$prefix.'_launch'] ) )
-		update_post_meta( $post_id, $prefix.'_launch', wp_kses( $_POST[$prefix.'_launch'], $allowed ) );
-	else
-		delete_post_meta($post_id, $prefix.'_launch');
-
-	/*
-	if( isset( $_POST[$prefix.'_select'] ) )
-		update_post_meta( $post_id, $prefix.'_select', esc_attr( $_POST[$prefix.'_select'] ) );
-	*/
-	// This is purely my personal preference for saving checkboxes
-	//$chk = ( isset( $_POST[$prefix.'_website'] ) && $_POST[$prefix.'_website'] ) ? 'on' : 'off';
-
-
-	//update_post_meta( $post_id, $prefix.'_website', $chk );
-}
 
 
 /* Image resizer */
@@ -1149,53 +965,6 @@ if(!function_exists('ceon_image_src')){
 
 
 
-/* Filter the content to insert post meta-data */
-
-if(!function_exists('veuse_portfolio_filter_content')){
-
-	function veuse_portfolio_filter_content($content) {
-
-		global $post;
-
-		if( is_singular( 'portfolio') /* && is_main_query()*/ ) {
-
-			/* Get meta into variables */
-			$veuse_portfolio_options = get_option('veuse_portfolio_options');
-
-			$image = get_the_post_thumbnail($post->ID, 'large');
-
-			$categories = get_the_term_list($post->ID, 'portfolio-category','',', ','');
-			$clients = get_the_term_list($post->ID, 'portfolio-client','',', ','');
-			$link = get_post_meta($post->ID,'veuse_portfolio_website',true);
-
-			$post = get_post($post->ID);
-
-			$before_content  = '';
-			$content = '';
-			$after_content  = '';
-
-			//$before_content .= '<p class="lead">'. $post->post_excerpt .'</p>';
-			$content .= wpautop(do_shortcode($post->post_content)) ;
-
-
-			$after_content .= '<ul class="portfolio-meta">';
-				if($categories)	$after_content .= '<li><i class="icon-briefcase"></i> ' . $categories . '</li>';
-	 			//if($clients)	$after_content .= '<li><i class="icon-bookmark"></i> '. $clients . '</li>';
-	 			if($link)		$after_content .= '<li><i class="icon-external-link"></i> <a href="'.$link.'" rel="external">'. $link .'</a></li>';
-			$after_content .= '</ul>';
-
-			$content = $before_content . $content . $after_content;
-			return $content;
-		}
-
-		else {
-
-			return $content;
-		}
-	}
-
-	add_filter('the_content', 'veuse_portfolio_filter_content', 1);
-}
 
 /* Insert retina image */
 
