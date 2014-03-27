@@ -14,10 +14,7 @@ Publish and categorise your projects using a familiar WordPress interface.
 
 Include project detailss, like featured image, galleries, video and meta like client, skills, categores, project website and more.
 
-
-**Fully integrated with WordPress**
-
-Display your portfolio of projects using native WordPress architecture (project archives & single pages). Portfolio can be filtered or paginated, and thumbnail can be enlarged in a lightbox ( optional ).
+Portfolio can be filtered or paginated, and thumbnail can be enlarged in a lightbox ( optional ).
 
 
 **Widget or Shortcode**
