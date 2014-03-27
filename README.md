@@ -28,31 +28,31 @@ Do not change any plugin files directly as they may be overwritten in a future p
 
 
 ###The loop
-**File:** */veuse-portfolio/views/front/loop-portfolio.php*
+**File:** /veuse-portfolio/views/front/loop-portfolio.php
 
 The loop is the file that displays the portfolio grid list. The file is commented with some instructions.
 
 
 ###The single project
-**File:** */veuse-portfolio/views/front/single-portfolio.php*
+**File:** /veuse-portfolio/views/front/single-portfolio.php
 
 This is the file that displays the single portfolio-post. The file has markup that makes it work perfectly with the twenty-twelve theme. You may need to change the markup to fit your theme. This file is commented with some instructions.
 
 I have built in hooks for changing the markup, so you don't need to edit the file directly.
 
 ###Project meta
-**File:** */veuse-portfolio/views/front/project-meta.php*
+**File:** /veuse-portfolio/views/front/project-meta.php
 
 This file contains the projects meta, like project website, launch date, credits and client name.
 
 It also displays categories and skills.
 
 ###Project image
-**File:** */veuse-portfolio/views/front/project-image.php*
+**File:** /veuse-portfolio/views/front/project-image.php
 
 This file contains the posts featured image.
 
 
-**For donations, please follow this link**
+##For donations, please follow this link
 
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andreas%2ewilthil%40gmail%2ecom&lc=NO&item_name=Veuse&no_note=0&cn=Add%20special%20instructions%20to%20the%20seller%3a&no_shipping=1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"> Donate link</a>
