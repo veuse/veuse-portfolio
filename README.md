@@ -33,12 +33,19 @@ Do not change any plugin files directly as they may be overwritten in a future p
 The loop is the file that displays the portfolio grid list. The file is commented with some instructions.
 
 
-###The single portfolio-post
+###The single project
 **File:** */veuse-portfolio/views/front/single-portfolio.php*
 
 This is the file that displays the single portfolio-post. The file has markup that makes it work perfectly with the twenty-twelve theme. You may need to change the markup to fit your theme. This file is commented with some instructions.
 
 I have built in hooks for changing the markup, so you don't need to edit the file directly.
+
+###Project meta
+**File:** */veuse-portfolio/views/front/project-meta.php*
+
+This file contains the projects meta, like project website, launch date, credits and client name.
+
+It also displays categories and skills.
 
 
 **For donations, please follow this link**
