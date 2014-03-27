@@ -3,7 +3,7 @@ Veuse-Portfolio
 
 <b>This plugin is meant for creating and displaying projects/work on your website.</b>
 
-Portfolios can be inserted on any page or post via shortcode ( shortcode generator ) or with a widget ( I you use a pagebuilder, like <a href="http://wordpress.org/plugins/siteorigin-panels/">Page Builder by Siteorigin</a> )
+Portfolios can be inserted on any page or post via shortcode ( shortcode generator ) or with a widget ( If you use a pagebuilder, like <a href="http://wordpress.org/plugins/siteorigin-panels/">Page Builder by Siteorigin</a> )
 
 Portfolio can be filtered or paginated, and thumbnail can be enlarged in a lightbox ( optional ). 
 
