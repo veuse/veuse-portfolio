@@ -3,17 +3,16 @@ Veuse-Portfolio
 
 Veuse Portfolio by Veuse is an easy to use tool for showcasing your projects on your WordPress site.  Display your projects  via a shortcode or widget or template.
 
-<b>This plugin is meant for creating and displaying projects/work on your WordPress website.</b>
 
 
 **Easy to use**
 
-Publish and categorise your portfolio of projects using a familiar WordPress interface.
+Publish and categorise your projects using a familiar WordPress interface.
 
 
 **Detailed project information**
 
-Include full project details such as cover images, galleries, categories, client details and projects URLs.
+Include project detailss, like featured image, galleries, video and meta like client, skills, categores, project website and more.
 
 
 **Fully integrated with WordPress**
