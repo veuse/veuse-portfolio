@@ -7,25 +7,39 @@ Veuse Portfolio by Veuse is an easy to use tool for showcasing your projects on 
 
 
 **Easy to use**
+
 Publish and categorise your portfolio of projects using a familiar WordPress interface.
 
+
 **Detailed project information**
+
 Include full project details such as cover images, galleries, categories, client details and projects URLs.
 
+
 **Fully integrated with WordPress**
+
 Display your portfolio of projects using native WordPress architecture (project archives & single pages). Portfolio can be filtered or paginated, and thumbnail can be enlarged in a lightbox ( optional ).
 
+
 **Widget or Shortcode**
+
 Portfolios can be inserted on any page or post via shortcode ( shortcode generator ) or with a widget ( If you use a pagebuilder, like <a href="http://wordpress.org/plugins/siteorigin-panels/">Page Builder by Siteorigin</a> )
 
+
 **Mobile friendly**
+
 Projects includes a responsive layout to integrate with any theme.
 
+
 **Customisable**
+
 The template files can be overridden in your theme, via hooks and template overrides. The portfolio has very little styling, so you can easily adapt it to suit your website with a little css. 
 
+
 **Documentation**
+
 Extensive documentation is included in an admin-page. Right where you need it.
+
 
 **Quick Facts**
 
