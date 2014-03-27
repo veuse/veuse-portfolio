@@ -1,29 +1,43 @@
 <?php
 /**
- * The Template for displaying single posts 
- * of post-type portfolio 
+ * The template for displaying single post of post-type portfolio
+ * 
+ * @ Post type: portfolio
  *
- */
+ *
+ * The hooks are filterable, so you can change markup without touching this file.
+ * Current markup is for twenty-twelve theme. 
+ * 
+ * Example filter for the veuse_before_single_project hook:
 
-get_header(); ?>
+	function your_function_name(){
+		return '<div id="someId" class="your classes here">';
+	}
+		
+	add_filter('veuse_before_project','your_function_name');
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<div class="entry-content">
+*/
 
-					<?php
-					
-					 while ( have_posts() ):   the_post(); 
-												
-						 the_content(); 
+get_header(); 
 
-					 endwhile; // end of the loop. ?>
-			
-				</div>
-			</article>
-		</div><!-- #content -->
-	</div><!-- #primary -->
+do_action('veuse_before_single_project'); // Function located in veuse-portfolio/includes/hooks.php - @ Filter name: veuse_before_project
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+do_action('veuse_before_single_project_article'); // Function located in veuse-portfolio/includes/hooks.php - @ Filter name: veuse_before_project_article
+
+
+/* Start loop */
+
+while ( have_posts() ):   the_post(); 
+											
+	 the_content(); // Post content - Filtered in veuse-portfolio.php
+
+endwhile; // end of the loop. 
+
+do_action('veuse_after_single_project_article'); // Function located in veuse-portfolio/includes/hooks.php - @ Filter name: veuse_after_project_article
+
+do_action('veuse_after_single_project'); // Function located in veuse-portfolio/includes/hooks.php - @ Filter name: veuse_after_project
+
+get_sidebar(); 
+get_footer(); 
+
+?>

@@ -803,6 +803,9 @@ function portfolio_popup_content() { ?>
 			<?php
 			}
 			
+			
+			
+			
 }
 
 
@@ -818,6 +821,8 @@ require_once 'documentation/documentation.php';
 /* Options */
 require_once 'views/back/post-meta.php';
 
+/* Hooks */
+require_once 'includes/hooks.php';
 
 /* Options */
 require_once 'views/back/options.php';
