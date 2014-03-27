@@ -32,6 +32,7 @@ The portfolio and projects adapts to any sceen size.
 The template files can be overridden in your theme, via hooks and template overrides. The portfolio has very little styling, so you can easily adapt it to suit your website with a little css. 
 
 
+
 **Documentation**
 
 Extensive documentation is included. It is localized inside your wp-admin, so it is always available when you need it the most.
