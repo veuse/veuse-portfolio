@@ -22,9 +22,9 @@ Portfolio can be filtered or paginated, and thumbnail can be enlarged in a light
 Portfolios can be inserted on any page or post via shortcode ( shortcode generator ) or with a widget ( If you use a pagebuilder, like <a href="http://wordpress.org/plugins/siteorigin-panels/">Page Builder by Siteorigin</a> )
 
 
-**Mobile friendly**
+**Adapts to any screen**
 
-Projects includes a responsive layout to integrate with any theme.
+The portfolio and projects adapts to any sceen size.
 
 
 **Customisable**
@@ -34,7 +34,11 @@ The template files can be overridden in your theme, via hooks and template overr
 
 **Documentation**
 
-Extensive documentation is included in an admin-page. Right where you need it.
+Extensive documentation is included. It is localized inside your wp-admin, so it is always available when you need it the most.
+
+
+**Fully localized**
+A .po file is included for translating all plugin textstrings.
 
 
 **Quick Facts**
