@@ -47,6 +47,11 @@ This file contains the projects meta, like project website, launch date, credits
 
 It also displays categories and skills.
 
+###Project image
+**File:** */veuse-portfolio/views/front/project-image.php*
+
+This file contains the posts featured image.
+
 
 **For donations, please follow this link**
 
