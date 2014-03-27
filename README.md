@@ -24,13 +24,20 @@ http://veuse.com/demo-veuse-portfolio/
 
 ##Customizing the portfolio and projects
 
+Do not change any plugin files directly as they may be overwritten in a future plugin update. Instead, copy the plugin file you want to customize to your theme folder, and change it from there.
+
+
 ###The loop
-**Location:** *plugins/veuse-portfolio/views/front/loop-portfolio.php*
+**File:** */veuse-portfolio/views/front/loop-portfolio.php*
 
-Do not change any plugin files directly as they may be overwritten in an update. Instead, copy the plugin file /views/front/loop-portfolio.php to your theme folder, and customize from there.
+The loop is the file that displays the portfolio grid list. The file is commented with some instructions.
 
-**The single portfolio-post*/
-Info coming...
+
+##The single portfolio-post
+**File:** */veuse-portfolio/views/front/single-portfolio.php*
+
+This is the file that displays the single portfolio-post. The file is commented with some instructions.
+
 
 
 **For donations, please follow this link**
