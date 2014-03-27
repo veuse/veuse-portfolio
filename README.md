@@ -25,7 +25,7 @@ http://veuse.com/demo-veuse-portfolio/
 ##Customizing the portfolio and projects
 
 ###The loop
-**Location:** *plugins/veuse-portfolio/views/front/loop-portfolio.php
+**Location:** *plugins/veuse-portfolio/views/front/loop-portfolio.php*
 
 Do not change any plugin files directly as they may be overwritten in an update. Instead, copy the plugin file /views/front/loop-portfolio.php to your theme folder, and customize from there.
 
