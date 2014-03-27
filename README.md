@@ -36,8 +36,9 @@ The loop is the file that displays the portfolio grid list. The file is commente
 ###The single portfolio-post
 **File:** */veuse-portfolio/views/front/single-portfolio.php*
 
-This is the file that displays the single portfolio-post. The file is commented with some instructions.
+This is the file that displays the single portfolio-post. The file has markup that makes it work perfectly with the twenty-twelve theme. You may need to change the markup to fit your theme. This file is commented with some instructions.
 
+I have built in some hooks for changing the markup, so you don't need to edit the file directly.
 
 
 **For donations, please follow this link**
