@@ -1,7 +1,7 @@
 Veuse-Portfolio
 ===============
 
-<b>This plugin is meant for creating and displaying projects/work on your website.</b>
+<b>This plugin is meant for creating and displaying projects/work on your WordPress website.</b>
 
 Portfolios can be inserted on any page or post via shortcode ( shortcode generator ) or with a widget ( If you use a pagebuilder, like <a href="http://wordpress.org/plugins/siteorigin-panels/">Page Builder by Siteorigin</a> )
 
@@ -18,9 +18,10 @@ The template files can be overridden in your theme, and the portfolio has very l
 - License: GPLv2
 - License URI: <h href="http://www.gnu.org/licenses/gpl-2.0.html">http://www.gnu.org/licenses/gpl-2.0.html</a>
 
-**Demo**
+###Demo
 
 http://veuse.com/demo-veuse-portfolio/
+
 
 ##Customizing the portfolio and projects
 
