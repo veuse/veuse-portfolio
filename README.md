@@ -33,7 +33,7 @@ Do not change any plugin files directly as they may be overwritten in a future p
 The loop is the file that displays the portfolio grid list. The file is commented with some instructions.
 
 
-##The single portfolio-post
+###The single portfolio-post
 **File:** */veuse-portfolio/views/front/single-portfolio.php*
 
 This is the file that displays the single portfolio-post. The file is commented with some instructions.
